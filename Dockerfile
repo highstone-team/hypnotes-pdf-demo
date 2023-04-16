@@ -1,4 +1,4 @@
-FROM node:18.3.0-alpine as build
+FROM node:16.18.0-alpine as build
 
 ENV PORT 3300
 
@@ -9,6 +9,14 @@ WORKDIR /usr/src/app
 # Installing dependencies
 COPY package*.json /usr/src/app/
 COPY yarn.lock /usr/src/app/
+
+# Install build tools, Python, and any other required dependencies
+RUN apk add --no-cache --virtual .gyp \
+    python3 \
+    make \
+    g++ \
+    && yarn install \
+    && apk del .gyp
 RUN yarn install
 
 # Copying source files
