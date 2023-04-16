@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hypnotes-PDF
 
-## Getting Started
+A React library for creating and filling PDF forms. This library includes two components: `FormCreate` and `FormFill`.
 
-First, run the development server:
+## Installation
+
+To install the `hypnotes-pdf` package, run the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm install hypnotes-pdf
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After installation cp the pdf.worker to your public folder.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+cp node_modules/hypnotes-pdf/dist/lib/pdf.worker.min.js ./public/
+```
+## Usage
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+To use the FormCreate and FormFill components, you should import them as dynamic components with Next.js. This is necessary because these components use browser-specific APIs and should not be server-side rendered.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```jsx
+import dynamic from "next/dynamic";
 
-## Learn More
+const FormCreate = dynamic(
+  import("hypnotes-pdf/dist").then((module) => module.FormCreate),
+  { loading: () => <p>Loading...</p>, ssr: false }
+);
 
-To learn more about Next.js, take a look at the following resources:
+const FormFill = dynamic(
+  import("hypnotes-pdf/dist").then((module) => module.FormFill),
+  { loading: () => <p>Loading...</p>, ssr: false }
+);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Example Implementation
 
-## Deploy on Vercel
+Below is an example implementation of how to use the FormCreate and FormFill components in a Next.js application:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```jsx
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const FormCreate = dynamic(
+  // ... your dynamic import here
+);
+
+const FormFill = dynamic(
+  // ... your dynamic import here
+);
+
+export default function Home() {
+  // ... your component state and functions here
+
+  return (
+    <div style={{ height: "90vh" }}>
+      {/* Your file input, buttons, and conditional rendering */}
+    </div>
+  );
+}
+
+
+```
