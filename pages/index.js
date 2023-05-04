@@ -29,7 +29,15 @@ export default function Home() {
     }
   };
 
-  const handleFormCreateSave = async (formFieldsData, inputFieldsData) => {
+  const handleFormCreateSave = async (
+    formFieldsData,
+    inputFieldsData,
+    isAllRequiredFieldFilled
+  ) => {
+    if (!isAllRequiredFieldFilled) {
+      alert("Fill all fields");
+      return;
+    }
     setFormFields(formFieldsData);
     let data = {};
     for (const index in inputFieldsData) {
