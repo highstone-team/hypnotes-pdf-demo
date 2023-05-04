@@ -29,15 +29,7 @@ export default function Home() {
     }
   };
 
-  const handleFormCreateSave = async (
-    formFieldsData,
-    inputFieldsData,
-    isAllRequiredFieldFilled
-  ) => {
-    if (!isAllRequiredFieldFilled) {
-      alert("Fill all fields");
-      return;
-    }
+  const handleFormCreateSave = async (formFieldsData, inputFieldsData) => {
     setFormFields(formFieldsData);
     let data = {};
     for (const index in inputFieldsData) {
@@ -71,7 +63,15 @@ export default function Home() {
     }
   };
 
-  const handleFormFillSave = async (formFields, formFieldData) => {
+  const handleFormFillSave = async (
+    formFields,
+    formFieldData,
+    isAllRequiredFieldFilled
+  ) => {
+    if (!isAllRequiredFieldFilled) {
+      alert("Fill all fields");
+      return;
+    }
     const response = await fetch(pdfUrl);
     const pdfBlob = await response.blob();
     const licenseKey = "rjDFL7RX@C03";
