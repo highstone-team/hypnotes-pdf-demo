@@ -1234,10 +1234,10 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hypnotes-pdf@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/hypnotes-pdf/-/hypnotes-pdf-1.9.1.tgz#d9172a27c24415eb23c05a08fff666ce6dac1a10"
-  integrity sha512-zeTBOPXXi48igSCcpIGlDgKJyBrFr5fSN3932rQMQfuAd+KWDE8YAc99kIyKNNM1KaoPQ6JnCWew/I5vjC+s6w==
+hypnotes-pdf@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/hypnotes-pdf/-/hypnotes-pdf-1.9.2.tgz#a2c6f57e1c52810b26509fb89edb207e0f679098"
+  integrity sha512-XzqXWio0fSNZc9U4k2ULJVb78mMIVzcEvgKxHHz3FI5pUK1TLeF00tZBa4eBpw/25pXLz0YnQ3zn2pcFhVR9aw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "6.4.0"
     "@fortawesome/free-solid-svg-icons" "6.4.0"
